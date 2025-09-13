@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Blog</title>
+
+        <link rel="icon" type="image/png" href="assets/wb.png">
+
+    <!-- Importing a single Google Font: Poppins for all text -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom CSS for a smoother header transition */
+        .header-scrolled {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* Custom animation for scroll reveal effect */
+        .hidden-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .show-reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .home-bg {
+        background: url('assets/home-bg.png') center center / cover no-repeat fixed;
+        position: relative;
+        overflow: hidden;
+        }
+
+        /* Optional subtle fade-in animation */
+        @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in-up {
+        animation: fadeInUp 1s ease-out forwards;
+        }
+
+
+
+
+        /* Custom fade-in-from-bottom effect for the home section */
+        .fade-overlay {
+            background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        }
+
+        /* Custom hover effect for blog cards */
+        .blog-card-hover {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .blog-card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* New custom style for video container hover and overlay */
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .video-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Gradient overlay for video labels */
+        .video-fade-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            pointer-events: none; /* Allows clicks to pass through to the video */
+        }
+        .video-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        /* Add to your CSS file or a <style> tag */
+.blog-card-hover {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.blog-card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+        
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header -->
+   <header id="main-header" class="bg-gray-950 shadow-md fixed w-full top-0 z-50 transition-all duration-300 h-20">
+  <nav class="container mx-auto px-6 h-full flex items-center justify-between">
+
+    <!-- Left Side: Logos -->
+    <div class="flex items-center space-x-4">
+  <a href="https://thelewiscollege.edu.ph/" target="_blank" class="transition-transform transform hover:scale-110 hover:shadow-lg rounded-full">
+    <img src="assets/logos/tlc.png" alt="The Lewis College Logo" class="h-12 w-12 object-contain rounded-full shadow-md" />
+  </a>
+
+  <a href="https://www.facebook.com/groups/tlcccs" target="_blank" class="transition-transform transform hover:scale-110 hover:shadow-lg rounded-full">
+    <img src="assets/logos/ccs-1.png" alt="CCS Logo 1" class="h-12 w-12 object-contain rounded-full shadow-md" />
+  </a>
+
+  <a href="https://www.facebook.com/groups/tlcccs" target="_blank" class="transition-transform transform hover:scale-110 hover:shadow-lg rounded-full">
+    <img src="assets/logos/ccs-2.png" alt="CCS Logo 2" class="h-10 w-10 object-contain rounded-full shadow-md" />
+  </a>
+
+  <a href="https://depedsorsogoncity.com/" target="_blank" class="transition-transform transform hover:scale-110 hover:shadow-lg rounded-full">
+    <img src="assets/logos/deped-1.png" alt="DepEd Logo 1" class="h-10 w-10 object-contain rounded-full shadow-md" />
+  </a>
+
+  <a href="https://www.deped.gov.ph/" target="_blank" class="transition-transform transform hover:scale-110 hover:shadow-lg rounded-full">
+    <img src="assets/logos/deped-2.png" alt="DepEd Logo 2" class="h-10 w-10 object-contain rounded-full shadow-md" />
+  </a>
+</div>
+
+
+    <!-- Right Side: Desktop Nav Links -->
+    <div class="hidden md:flex space-x-8">
+        <a href="#home" 
+            class="relative text-white transition duration-300 transform hover:scale-110 
+                    after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+            Home
+        </a>
+
+        <a href="#about-me" 
+            class="relative text-white transition duration-300 transform hover:scale-110 
+                    after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+            About Me
+        </a>
+
+        <a href="#blog" 
+            class="relative text-white transition duration-300 transform hover:scale-110 
+                    after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+            Blog
+        </a>
+
+        <a href="#gallery" 
+            class="relative text-white transition duration-300 transform hover:scale-110 
+                    after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+            Gallery
+        </a>
+        </div>
+
+
+    <!-- Mobile Menu Button -->
+    <div class="md:hidden">
+      <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu (hidden by default) -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-2">
+    <a href="#home" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 transform hover:scale-105 transition">Home</a>
+    <a href="#about-me" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 transform hover:scale-105 transition">About Me</a>
+    <a href="#gallery" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 transform hover:scale-105 transition">Gallery</a>
+    <a href="#blog" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 transform hover:scale-105 transition">Blog</a>
+  </div>
+</header><br><br>
+
+
+
+    <section 
+  id="home"
+  class="relative home-bg min-h-screen flex items-center justify-center px-6 text-white"
+>
+  <!-- Black gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30"></div>
+
+  <div class="relative text-center max-w-4xl">
+    <!-- Main Title -->
+    <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight mb-6 animate-fade-in-up">
+      My Internship Journey
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="text-lg sm:text-xl md:text-2xl font-medium text-gray-100 mb-8 animate-fade-in-up">
+      DepEd Sorsogon City Division
+    </p><br>
+
+    <!-- Description -->
+    <div class="space-y-4 text-base sm:text-lg md:text-xl text-gray-200 animate-fade-in-up">
+      <p>
+        The Department of Education (DepEd) Sorsogon City Division is committed to delivering quality, equitable,
+        culture-based, and inclusive basic education for every learner.
+      </p>
+      <p>
+        As a proud partner in nation-building, we aim to nurture lifelong learners who are equipped with the values, 
+        knowledge, and skills to become productive and responsible citizens.
+      </p>
+      <p>
+        Through this official website, we provide up-to-date information, resources, and services to support our learners, 
+        teachers, parents, and stakeholders. Together, let us continue to build a brighter future for the youth of Sorsogon City.
+      </p>
+      <p class="font-semibold tracking-wide uppercase text-gray-100">
+        Maka-Diyos · Maka-Tao · Makakalikasan · Makabansa
+      </p>
+    </div><br>
+
+    <!-- Optional Call to Action -->
+    <div class="mt-10 animate-fade-in-up">
+  <a href="#blog" 
+     class="group relative inline-flex items-center gap-3 px-10 py-4 
+            rounded-full bg-gray-950 hover:bg-gray-800 
+            text-white text-lg font-semibold 
+            border border-white hover:border-gray-300
+            shadow-lg hover:shadow-2xl 
+            transform hover:-translate-y-0.5 
+            transition-all duration-300">
+
+    <span class="relative z-10">Explore My Journal</span>
+
+    <!-- arrow icon -->
+    <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
+         fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" 
+            d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+    </svg>
+
+    <!-- subtle glow -->
+    <span class="absolute inset-0 rounded-full bg-gray-700 opacity-0 
+                 group-hover:opacity-20 blur-lg transition duration-300"></span>
+  </a>
+</div>
+
+  </div>
+</section>
+
+
+        <!-- About Me Section -->
+        <section id="about-me" class="py-24 bg-gray-900 relative">
+        <div class="container mx-auto px-6 max-w-10xl">
+            <!-- Section Heading -->
+            <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 hidden-reveal">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-500">About Me</span>
+            </h2>
+            <div class="w-24 h-1 bg-white mx-auto rounded-full hidden-reveal"></div>
+            </div>
+
+    <!-- Profile Card -->
+    <div
+      class="bg-gray-950 rounded-2xl shadow-xl p-8 md:p-12 hidden-reveal flex flex-col md:flex-row items-center md:items-start gap-10 border border-gray-700 hover:shadow-2xl transition duration-300"
+    >
+      <!-- Profile Picture -->
+      <div class="relative w-52 h-52 flex-shrink-0 group">
+        <img
+          class="w-full h-full object-cover rounded-full shadow-lg border-4 border-gray-950 group-hover:scale-105 transition-transform duration-300"
+          src="assets/rod.jpg"
+          alt="Profile Picture of Rodrigo S. Belesario III"
+        />
+        <!-- Decorative ring -->
+        <div class="absolute inset-0 rounded-full border-4 border-blue-500 opacity-30 animate-pulse"></div>
+      </div>
+
+      <!-- Profile Content -->
+      <div class="relative flex-1 bg-gray-900 p-8 md:p-12 rounded-3xl shadow-2xl text-center md:text-left">
+        <!-- 3-dot menu (design only) -->
+        <div class="absolute top-4 right-8 mt-4 flex flex-col space-y-1">
+            <span class="w-2 h-2 bg-gray-400 rounded-full"></span>
+            <span class="w-2 h-2 bg-gray-400 rounded-full"></span>
+            <span class="w-2 h-2 bg-gray-400 rounded-full"></span>
+        </div>
+
+        <!-- Name -->
+        <h3 class="text-3xl md:text-4xl font-extrabold text-white mb-2">
+            RODRIGO S. BELESARIO III
+        </h3>
+        
+        <!-- Degree -->
+        <p class="text-lg text-blue-400 font-semibold mb-2">
+            Bachelor of Science in Information Technology 4
+        </p>
+
+        <!-- Location -->
+        <p class="text-md text-gray-300 mb-6">
+            Living in <span class="font-semibold text-white">Sirangan, Sorsogon City</span>
+        </p>
+
+        <!-- About Me -->
+        <p class="text-lg text-white leading-relaxed mb-4">
+            Hi! I’m a fourth-year BS Information Technology student at 
+            The Lewis College. I’m passionate about technology and creating 
+            efficient, user-friendly websites.
+        </p>
+
+        <p class="text-lg text-white leading-relaxed mb-4">
+            I enjoy working on both front-end and back-end development, managing databases, and designing intuitive user interfaces. Collaborating with teams to solve real-world problems through technology is something I find very rewarding.
+        </p>
+
+        <p class="text-lg text-white leading-relaxed">
+            During my internship, I hope to apply what I’ve learned in school, contribute to team projects, and gain hands-on experience. This journal is a record of my journey, experiences, and the projects I work on during this time.
+        </p>
+        </div>
+     </div>
+  </div>
+</section>
+    
+
+       <section id="blog" class="py-24 bg-gray-950 text-white">
+  <div class="container mx-auto px-6 max-w-7xl">
+    <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 hidden-reveal">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-500">Internship Journal</span>
+            </h2>
+            <div class="w-24 h-1 bg-white mx-auto rounded-full hidden-reveal"></div>
+            </div>
+
+
+    <!-- Grid Layout -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <!-- CARD TEMPLATE -->
+      <div class="group bg-gray-800 shadow-lg rounded-2xl overflow-hidden transition transform hover:scale-105 cursor-pointer">
+        <a href="week1.html" class="relative block">
+            <video
+            class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110 group-hover:brightness-75"
+            src="assets/videos/week1.mov"
+            autoplay
+            muted
+            loop
+            playsinline
+            ></video>
+        </a>
+        <div class="p-5">
+            <h3 class="text-lg font-semibold mb-1 text-white">Week 1: First Impressions</h3>
+            <p class="text-gray-400 text-xs mb-2">September 8 - September 13</p>
+            <p class="text-gray-300 text-sm leading-relaxed line-clamp-4">
+            During my first week as an intern at the DepEd Sorsogon City Division, I initially felt a bit awkward moving around, 
+            as I didn’t know the staff yet. However, over time, I got to know them, and they were very kind and welcoming. 
+            I had the opportunity to meet Sir Francis, the ICT head of DepEd Sorsogon City Division, from whom I immediately learned a lot. 
+            One of the first tasks he assigned me was to scan memos from higher offices to post on the blog using WordPress. 
+            I also helped set up a Google Meet for those who couldn’t attend the meeting, and I assisted in the bidding process in person.
+            </p>
+        </div>
+        </div>
+
+        <!-- More Card Here -->
+
+
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section id="gallery" class="py-20 bg-gray-950">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 hidden-reveal">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-500">Internship Gallery</span>
+      </h2>
+      <div class="w-24 h-1 bg-white mx-auto rounded-full hidden-reveal"></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <a href="week1-gallery.html" class="block">
+  <div class="image-container relative rounded-lg shadow-xl overflow-hidden hidden-reveal group aspect-[3/4]">
+      <img 
+        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        src="assets/gallery-display/week1.jpg" 
+        alt="Week 1"
+      />
+      <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition duration-300"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+        <h3 class="text-white font-bold text-lg">Week 1</h3>
+      </div>
+  </div>
+</a>
+
+
+      <div class="video-container relative rounded-lg shadow-xl overflow-hidden hidden-reveal group aspect-[3/4]">
+        <video class="w-full h-full object-cover" src="" autoplay loop muted playsinline></video>
+        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition duration-300"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+          <h3 class="text-white font-bold text-lg">Week 2</h3>
+        </div>
+      </div>
+
+      <div class="video-container relative rounded-lg shadow-xl overflow-hidden hidden-reveal group aspect-[3/4]">
+        <video class="w-full h-full object-cover" src="" autoplay loop muted playsinline></video>
+        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition duration-300"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+          <h3 class="text-white font-bold text-lg">Week 3</h3>
+        </div>
+      </div>
+
+      <div class="video-container relative rounded-lg shadow-xl overflow-hidden hidden-reveal group aspect-[3/4]">
+        <video class="w-full h-full object-cover" src="" autoplay loop muted playsinline></video>
+        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition duration-300"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+          <h3 class="text-white font-bold text-lg">Week 4</h3>
+        </div>
+      </div>
+
+      <div class="video-container relative rounded-lg shadow-xl overflow-hidden hidden-reveal group aspect-[3/4]">
+        <video class="w-full h-full object-cover" src="" autoplay loop muted playsinline></video>
+        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition duration-300"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+          <h3 class="text-white font-bold text-lg">Week 5</h3>
+        </div>
+      </div>
+
+      <div class="video-container relative rounded-lg shadow-xl overflow-hidden hidden-reveal group aspect-[3/4]">
+        <video class="w-full h-full object-cover" src="" autoplay loop muted playsinline></video>
+        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition duration-300"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+          <h3 class="text-white font-bold text-lg">Week 6</h3>
+        </div>
+      </div>
+
+      <div class="video-container relative rounded-lg shadow-xl overflow-hidden hidden-reveal group aspect-[3/4]">
+        <video class="w-full h-full object-cover" src="" autoplay loop muted playsinline></video>
+        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition duration-300"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+          <h3 class="text-white font-bold text-lg">Week 7</h3>
+        </div>
+      </div>
+
+      <div class="video-container relative rounded-lg shadow-xl overflow-hidden hidden-reveal group aspect-[3/4]">
+        <video class="w-full h-full object-cover" src="" autoplay loop muted playsinline></video>
+        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition duration-300"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+          <h3 class="text-white font-bold text-lg">Week 8</h3>
+        </div>
+      </div>
+
+      <div class="video-container relative rounded-lg shadow-xl overflow-hidden hidden-reveal group aspect-[3/4]">
+        <video class="w-full h-full object-cover" src="" autoplay loop muted playsinline></video>
+        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition duration-300"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+          <h3 class="text-white font-bold text-lg">Week 9</h3>
+        </div>
+      </div>
+
+      <div class="video-container relative rounded-lg shadow-xl overflow-hidden hidden-reveal group aspect-[3/4]">
+        <video class="w-full h-full object-cover" src="" autoplay loop muted playsinline></video>
+        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition duration-300"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+          <h3 class="text-white font-bold text-lg">Week 10</h3>
+        </div>
+      </div>
+
+      <div class="video-container relative rounded-lg shadow-xl overflow-hidden hidden-reveal group aspect-[3/4]">
+        <video class="w-full h-full object-cover" src="" autoplay loop muted playsinline></video>
+        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition duration-300"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+          <h3 class="text-white font-bold text-lg">Week 11</h3>
+        </div>
+      </div>
+
+      <div class="video-container relative rounded-lg shadow-xl overflow-hidden hidden-reveal group aspect-[3/4]">
+        <video class="w-full h-full object-cover" src="" autoplay loop muted playsinline></video>
+        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition duration-300"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+          <h3 class="text-white font-bold text-lg">Week 12</h3>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+    </main>
+
+    <!-- Footer -->
+   <footer class="bg-gray-950 text-white py-12">
+  <div class="container mx-auto px-6 text-center">
+
+    <!-- Navigation Links -->
+    <nav class="flex flex-wrap justify-center space-x-6 mb-6 text-gray-400 text-sm sm:text-base">
+      <a href="#home" class="hover:text-white transition-colors duration-300">Home</a>
+      <a href="#about-me" class="hover:text-white transition-colors duration-300">About Me</a>
+      <a href="#gallery" class="hover:text-white transition-colors duration-300">Gallery</a>
+      <a href="#blog" class="hover:text-white transition-colors duration-300">Blog</a>
+    </nav>
+
+    <!-- Social Media Icons -->
+    <div class="flex flex-col md:flex-row justify-center items-center mb-6 space-y-4 md:space-y-0 md:space-x-8">
+  
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/r0ckyrod/" target="_blank" class="text-gray-400 hover:text-pink-500 transition-colors duration-300">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11.37a4 4 0 11-8 0 4 4 0 018 0z" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.5 6.5h.01" />
+    </svg>
+  </a>
+
+ <!-- Gmail -->
+<a href="mailto:rodbel200@gmail.com" class="text-gray-400 hover:text-red-500 transition-colors duration-300" title="Email me">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 48 48" fill="currentColor">
+    <path d="M4 8v32h40V8H4zm36 4l-16 14-16-14h32zm-32 24V14l16 14 16-14v22H8z"/>
+  </svg>
+</a>
+
+
+
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/r0ckyrod" target="_blank" class="text-gray-400 hover:text-blue-600 transition-colors duration-300">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3V2z" />
+    </svg>
+  </a>
+
+  <!-- GitHub -->
+  <a href="https://github.com/rooodbeeel16" target="_blank" class="text-gray-400 hover:text-gray-100 transition-colors duration-300">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 5.303 3.438 9.8 8.207 11.387.6.111.793-.261.793-.578v-2.234c-3.338.725-4.042-1.609-4.042-1.609-.546-1.386-1.333-1.755-1.333-1.755-1.089-.745.083-.73.083-.73 1.205.084 1.838 1.238 1.838 1.238 1.07 1.832 2.805 1.303 3.492 1.006.108-.782.417-1.305.76-1.604-2.665-.304-5.467-1.334-5.467-5.934 0-1.31.467-2.381 1.237-3.222-.124-.306-.536-1.525.117-3.177 0 0 1.008-.323 3.303 1.23a11.52 11.52 0 016.003 0c2.295-1.553 3.303-1.23 3.303-1.23.654 1.653.242 2.871.118 3.177.77.841 1.237 1.912 1.237 3.222 0 4.61-2.804 5.63-5.475 5.934.43.37.815.919.815 1.853v2.747c0 .319.192.69.8.577C20.565 21.8 24 17.303 24 12c0-6.627-5.373-12-12-12z" />
+    </svg>
+  </a>
+
+</div>
+
+
+    <!-- Credits -->
+    <p class="text-gray-400 text-sm">
+      <span class="font-semibold text-xl text-gray-300">Rodrigo S. Belesario III</span><br>
+      <span class="text-gray-300">BSIT 4 - The Lewis College</span>
+    </p>
+  </div>
+</footer>
+
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mainHeader = document.getElementById('main-header');
+        const homeSection = document.getElementById('home');
+
+        // Toggle mobile menu visibility
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const navLinks = document.querySelectorAll('#mobile-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Smooth scrolling for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - mainHeader.offsetHeight,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+    const carousel = document.getElementById('blog-carousel');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    let currentIndex = 0;
+    const totalItems = carousel.children.length;
+    const itemsPerPage = 3;
+
+    function updateCarousel() {
+        const itemWidth = carousel.children[0].offsetWidth + 32; // item width + gap
+        carousel.scrollTo({
+            left: currentIndex * itemWidth,
+            behavior: 'smooth'
+        });
+    }
+
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        updateCarousel();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+    });
+
+    // Automatic carousel
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+    }, 5000); // Change every 5 seconds
+});
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                mainHeader.classList.add('header-scrolled');
+            } else {
+                mainHeader.classList.remove('header-scrolled');
+            }
+        });
+
+        // Scroll reveal animation with Intersection Observer API
+        const hiddenElements = document.querySelectorAll('.hidden-reveal');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show-reveal');
+                } else {
+                    // Optional: remove show-reveal class to reset on scroll back up
+                    // entry.target.classList.remove('show-reveal');
+                }
+            });
+        }, {
+            threshold: 0.1, // Trigger when 10% of the element is visible
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        hiddenElements.forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
