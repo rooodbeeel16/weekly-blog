@@ -340,99 +340,75 @@
     
 
        <section id="blog" class="py-24 bg-gray-950 text-white">
-  <div class="container mx-auto px-6 max-w-7xl">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
     <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 hidden-reveal">
-            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-500">Internship Journal</span>
-            </h2>
-            <div class="w-24 h-1 bg-white mx-auto rounded-full hidden-reveal"></div>
-            </div>
-
+      <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 hidden-reveal">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-500">
+          Internship Journal
+        </span>
+      </h2>
+      <div class="w-24 h-1 bg-white mx-auto rounded-full hidden-reveal"></div>
+    </div>
 
     <!-- Grid Layout -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 hidden-reveal">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 hidden-reveal">
+      
       <!-- CARD TEMPLATE -->
       <div class="group bg-gray-800 shadow-lg rounded-2xl overflow-hidden transition transform hover:scale-105 cursor-pointer">
         <a href="week1.html" class="relative block">
-            <video
-            class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110 group-hover:brightness-75"
+          <video
+            class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-300 group-hover:scale-110 group-hover:brightness-75"
             src="assets/videos/week1.mov"
             autoplay
             muted
             loop
             playsinline
-            ></video>
-             <span class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-4xl font-extrabold drop-shadow-lg">
+          ></video>
+          <span class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-2xl sm:text-3xl md:text-4xl font-extrabold drop-shadow-lg">
             WEEK 1
-        </span>
+          </span>
         </a>
-        <div class="p-5">
-            <h3 class="text-xl font-semibold mb-1 text-white text-center">Getting Started</h3>
-            <p class="text-gray-400 text-xs mb-2 text-center">September 8 - September 13</p>
-            <p class="text-gray-300 text-sm leading-relaxed line-clamp-4">
-            During my first week as an intern at the DepEd Sorsogon City Division, I initially felt a bit awkward moving around, 
-            as I didn’t know the staff yet. However, over time, I got to know them, and they were very kind and welcoming. 
-            I had the opportunity to meet Sir Francis, the ICT head of DepEd Sorsogon City Division, from whom I immediately learned a lot. 
-            One of the first tasks he assigned me was to scan memos from higher offices to post on the blog using WordPress. 
-            I also helped set up a Google Meet for those who couldn’t attend the meeting, and I assisted in the bidding process in person.
-            </p>
+        <div class="p-4 sm:p-5">
+          <h3 class="text-lg sm:text-xl font-semibold mb-1 text-white text-center">Getting Started</h3>
+          <p class="text-gray-400 text-xs sm:text-sm mb-2 text-center">September 8 - September 12</p>
+          <p class="text-gray-300 text-sm leading-relaxed line-clamp-4 text-center sm:text-left">
+                    My first week as an intern at the DepEd Sorsogon City Division was both exciting and a little nerve-wracking. 
+                    Initially, I felt awkward moving around since I didn’t know the staff yet, but they were very kind and welcoming. 
+                    I had the opportunity to meet Sir Francis, the ICT head, and I immediately learned a lot from him.
+          </p>
         </div>
+      </div>
+
+      <div class="group bg-gray-800 shadow-lg rounded-2xl overflow-hidden transition transform hover:scale-105 cursor-pointer">
+        <a href="week2.html" class="relative block">
+          <video
+            class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-300 group-hover:scale-110 group-hover:brightness-75"
+            src="assets/videos/week2.mov"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+          <span class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-2xl sm:text-3xl md:text-4xl font-extrabold drop-shadow-lg">
+            WEEK 2
+          </span>
+        </a>
+        <div class="p-4 sm:p-5">
+          <h3 class="text-lg sm:text-xl font-semibold mb-1 text-white text-center">Getting Into the Flow</h3>
+          <p class="text-gray-400 text-xs sm:text-sm mb-2 text-center">September 15 - September 19</p>
+          <p class="text-gray-300 text-sm leading-relaxed line-clamp-4 text-center sm:text-left">
+                 This is my second week as an intern at DepEd Sorsogon City Division. This week, we photocopied almost 864 pages of lists to be given to the teachers, 
+                 and we’re still receiving memos and uploading them to WordPress.    
+          </p>
         </div>
-        
+      </div>
 
-        <!-- More Card Here -->
-
+      <!-- More cards go here... -->
 
     </div>
   </div>
 </section>
 
-<section>
-
-  <style>
-@keyframes ticker-kf {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-
-  100% {
-    transform: translate3d(-108rem, 0, 0);
-  }
-}
-
-.img-ticker {
-  animation: ticker-kf 40s linear infinite;
-}
-
-</style>
-
-  <!-- Wrap the slider in div with overflow hidden to hide scrollbars -->
-<div class="overflow-hidden">
-
-  <!-- The slider itself is a flex grid -->
-  <div class="flex -mx-2 img-ticker">
-
-    <!-- Original set of images -->
-    <!-- Each image is a grid column with width 16rem (w-64) and horiztonal margin 1rem (mx-4) -->
-    <img class="w-64 mx-4 self-start flex-none" src="assets/week-1/gallery/5.jpg">
-    <img class="w-64 mx-4 self-start flex-none" src="assets/week-1/gallery/5.jpg">
-    <img class="w-64 mx-4 self-start flex-none" src="assets/week-1/gallery/5.jpg">
-    <img class="w-64 mx-4 self-start flex-none" src="assets/week-1/gallery/5.jpg">
-    <img class="w-64 mx-4 self-start flex-none" src="assets/week-1/gallery/5.jpg">
-    <img class="w-64 mx-4 self-start flex-none" src="assets/week-1/gallery/5.jpg">
-
-    <!-- Copy set of images -->
-     <img class="w-64 mx-4 self-start flex-none" src="assets/week-1/gallery/5.jpg">
-    <img class="w-64 mx-4 self-start flex-none" src="assets/week-1/gallery/5.jpg">
-    <img class="w-64 mx-4 self-start flex-none" src="assets/week-1/gallery/5.jpg">
-    <img class="w-64 mx-4 self-start flex-none" src="assets/week-1/gallery/5.jpg">
-    <img class="w-64 mx-4 self-start flex-none" src="assets/week-1/gallery/5.jpg">
-    <img class="w-64 mx-4 self-start flex-none" src="assets/dep-logo.png">
-    
-    
-  </div>
-</div>
-</section>
 
 <!-- Gallery Section -->
 <section id="gallery" class="py-20 bg-gray-950">
@@ -462,11 +438,11 @@
           </div>
         </a>
 
-        <a href="week1-gallery.html" class="block">
+        <a href="week2-gallery.html" class="block">
         <div class="image-container relative rounded-xl overflow-hidden cursor-pointer group aspect-[3/4] transform hover:scale-103 transition-all duration-500 ease-in-out">
            <img 
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            src="assets/week-1/gallery/2.jpg" 
+            src="assets/gallery-display/week2.jpg" 
               alt="Week 1"/>
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent transition-all duration-500 group-hover:from-black/80"></div>
             <div class="absolute inset-0 flex items-end p-6"></div>
@@ -650,7 +626,7 @@
      Gallery
   </a>
   <a href="#blog" 
-     class="transform transition duration-300 hover:scale-110 hover:text-cyan-400">
+     class="transform transition duration-300 hover:scale-110 hover:text-cyan-400 ">
      Blog
   </a>
 </nav>
